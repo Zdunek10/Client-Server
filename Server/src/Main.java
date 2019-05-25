@@ -19,10 +19,12 @@ public class Main {
         main.ClientServConnection();
     }
 
+    int port = 4321;
+
     private void ClientServConnection() {
         //server socket waits for request to come in over the network
         //server listening on port 5000
-        try (ServerSocket serverSocket = new ServerSocket(5000)) {
+        try (ServerSocket serverSocket = new ServerSocket(port)) {
 
             Socket socket = serverSocket.accept();
             System.out.println("Client connected");
@@ -38,11 +40,13 @@ public class Main {
                 try {
                     ScriptEngineManager mgr = new ScriptEngineManager();
                     ScriptEngine engine = mgr.getEngineByName("JavaScript");
-//                    engine.eval(echoString);
-                    System.out.println("Wynik zapytania: " + engine.eval(echoString));
+                    //engine.eval(echoString);
+                    System.out.println("Requestet task to calculate: " + echoString);
+                    System.out.println("Result: " + engine.eval(echoString));
                     output.println("The result of requested mathematic task '" +
                             echoString + "' is: " +
                             engine.eval(echoString));
+
                 } catch (ScriptException e) {
                     e.printStackTrace();
                 }

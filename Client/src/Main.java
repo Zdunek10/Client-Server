@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Main {
     //CLIENT
 
-    int port = 5000;
+    int port = 4321;
     String lHost = "127.0.0.1";
 
     public static void main(String[] args) {
@@ -25,17 +25,19 @@ public class Main {
             Scanner scanner = new Scanner(System.in);
             String echoS, response;
             do {
-                System.out.println("Please enter a mathematical equation for calculation: ");
+                System.out.println("Please enter a mathematical equation for calculation or 'exit' to stop connection ");
                 echoS = scanner.nextLine(); //echoS = typed text into console
                 stringToClient.println(echoS);
+                //if (!echoS.equals("exit")) {
+                response = client.readLine();
+                System.out.println(response);
+                // }
+                // break;
 
-                if (!echoS.equals("exit")) {
-                    response = client.readLine();
-                    System.out.println(response);
-                    System.out.println("Connection stopped");
-                }
-                break;
-            } while (!echoS.equals("exit")); //if echo form the server is not EXIT, loop works
+            } while (!echoS.equals("exit"));
+            { //if echo form the server IS NOT EXIT, loop works
+                System.out.println("Connection stopped");
+            }
 
         } catch (IOException e) {
             System.out.println("Error - Client not connected: " + e.getMessage());
