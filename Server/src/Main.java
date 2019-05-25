@@ -12,10 +12,14 @@ import java.net.Socket;
 
 public class Main {
 
-//SERVER
-
+    //SERVER
     public static void main(String[] args) {
 
+        Main main = new Main();
+        main.ClientServConnection();
+    }
+
+    private void ClientServConnection() {
         //server socket waits for request to come in over the network
         //server listening on port 5000
         try (ServerSocket serverSocket = new ServerSocket(5000)) {
@@ -27,14 +31,9 @@ public class Main {
             BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
 
-            while (true){
+            while (true) {
                 String echoString = input.readLine();
                 //output.println("Echo from the server: " + echoString);
-
-               /* List<Character> chars = new ArrayList<>();
-                IntStream.range(0, echoString.length())
-                        .forEach(index -> chars.add(echoString.charAt(index)));
-                System.out.println(chars);*/
 
                 try {
                     ScriptEngineManager mgr = new ScriptEngineManager();
@@ -44,30 +43,16 @@ public class Main {
                     output.println("The result of requested mathematic task '" +
                             echoString + "' is: " +
                             engine.eval(echoString));
-
-                } catch (ScriptException e){
+                } catch (ScriptException e) {
                     e.printStackTrace();
                 }
-
-
-                if(echoString.equals("exit")){ //if message sent from Client is EXIT, connection is stopped
+                if (echoString.equals("exit")) { //if message sent from Client is EXIT, connection is stopped
                     break;
                 }
-
             }
-
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
-
-    private static void Obliczenie(String eString) {
-
-
-    }
-
 }
 
