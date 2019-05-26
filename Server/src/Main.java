@@ -24,7 +24,7 @@ public class Main {
 
     private void ClientServConnection() {
         //server socket waits for request to come in over the network
-        //server listening on port 5000
+        //server listening on port 4321
         try (ServerSocket serverSocket = new ServerSocket(port)) {
 
             Socket socket = serverSocket.accept();
@@ -60,4 +60,33 @@ public class Main {
         }
     }
 }
+
+
+/* Lukasz,
+
+         W temacie zadania, o którym wspominałem.
+
+Proszę o napisanie aplikacji klient oraz server:
+        - jezyk java lub python
+        - architektura klient/server
+        - aplikacja klient
+            aplikacja klient pyta uzytkownika o wyrażenie algebraiczne np. 2+2
+            aplikacja klient wysyla polecenie do servera: 2+2
+            aplikacja server oblicza i zwraca wartość 4 do klienta
+        - aplikacja server
+            aplikacja klient wyswietla wartosc
+            komunikacja po IP
+                dla uproszczenia 1 zapytanie na raz
+            odbiera zapytanie
+            oblicza wartośćzwraca
+            obliczona wartość do klienta
+            wspierane są podstawowe operacje algebraiczne + nawiasy (kilka zagłębień)
+                 np.
+                 1 + 2
+                 2 + 2) * 2
+                 ((((2 + 2) * 2) + 2) * 2)
+                 1.0 / 2
+Jak zrobisz to daj znac, możemy się spotkać i zobaczyć jak sobie poradziles.
+To nie jest trywialne zadanie, możesz zdecydować się na*/
+
 

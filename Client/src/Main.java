@@ -26,7 +26,7 @@ public class Main {
             String echoS, response;
             do {
                 System.out.println("Please enter a mathematical equation for calculation or 'exit' to stop connection ");
-                echoS = scanner.nextLine(); //echoS = typed text into console
+                echoS = scanner.nextLine(); //echoS = typed text
                 stringToClient.println(echoS);
                 //if (!echoS.equals("exit")) {
                 response = client.readLine();
@@ -34,13 +34,15 @@ public class Main {
                 // }
                 // break;
 
-            } while (!echoS.equals("exit")); //if echo form the server IS NOT EXIT, loop works
+            } while (!echoS.equals("exit")); //if echo from the server IS NOT EXIT - loop works
             System.out.println("Connection stopped");
 
         } catch (IOException e) {
             System.out.println("Error - Client not connected: " + e.getMessage());
         }
     }
-
-
 }
+
+
+
+
