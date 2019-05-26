@@ -17,12 +17,12 @@ public class Main {
     //  SERVER  //
     public static void main(String[] args) {
         Main main = new Main();
-        main.ClientServConnection();
+        main.ServConnection();
     }
 
     int port = 4321;
 
-    private void ClientServConnection() {
+    private void ServConnection() {
         //server socket waits for request to come in over the network
         //server listening on port 4321
         try (ServerSocket serverSocket = new ServerSocket(port)) {

@@ -10,13 +10,13 @@ public class Main {
     //  CLIENT  //
     public static void main(String[] args) {
         Main main = new Main();
-        main.ServConnection();
+        main.ClientToServerConn();
     }
 
     int port = 4321;
     String lHost = "127.0.0.1";
 
-    private void ServConnection() {
+    private void ClientToServerConn() {
         try (Socket socket = new Socket(lHost, port)) {
 
             BufferedReader client = new BufferedReader(new InputStreamReader(socket.getInputStream()));
