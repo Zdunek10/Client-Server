@@ -19,6 +19,7 @@ public class Main {
     private void ClientToServerConn() {
         try (Socket socket = new Socket(lHost, port)) {
 
+            //klasa bufferReader
             BufferedReader client = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter stringToClient = new PrintWriter(socket.getOutputStream(), true);
 
