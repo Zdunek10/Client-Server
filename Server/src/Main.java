@@ -16,15 +16,18 @@ public class Main {
 
     //  SERVER  //
     public static void main(String[] args) {
+        EvalEngine evalEngine = new EvalEngine();
+
         Main main = new Main();
         main.ClientServConnection();
+
     }
 
     int port = 4321;
 
-    private void ClientServConnection() {
+    public void ClientServConnection() {
         //server socket waits for request to come in over the network
-        //server listening on port 5000
+        //server listening on port 4321
         try (ServerSocket serverSocket = new ServerSocket(port)) {
 
             Socket socket = serverSocket.accept();
