@@ -10,16 +10,15 @@ public class Main {
     //  CLIENT  //
     public static void main(String[] args) {
         Main main = new Main();
-        main.ClientToServerConn();
+        main.ServConnection();
     }
 
     int port = 4321;
     String lHost = "127.0.0.1";
 
-    private void ClientToServerConn() {
+    private void ServConnection() {
         try (Socket socket = new Socket(lHost, port)) {
 
-            //klasa bufferReader
             BufferedReader client = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter stringToClient = new PrintWriter(socket.getOutputStream(), true);
 
@@ -27,7 +26,7 @@ public class Main {
             String echoS, response;
             do {
                 System.out.println("Please enter a mathematical equation for calculation or 'exit' to stop connection ");
-                echoS = scanner.nextLine(); //echoS = typed text
+                echoS = scanner.nextLine(); //echoS = typed text into console
                 stringToClient.println(echoS);
                 //if (!echoS.equals("exit")) {
                 response = client.readLine();
@@ -35,15 +34,13 @@ public class Main {
                 // }
                 // break;
 
-            } while (!echoS.equals("exit")); //if echo from the server IS NOT EXIT - loop works
+            } while (!echoS.equals("exit")); //if echo form the server IS NOT EXIT, loop works
             System.out.println("Connection stopped");
 
         } catch (IOException e) {
             System.out.println("Error - Client not connected: " + e.getMessage());
         }
     }
+
+
 }
-
-
-
-
